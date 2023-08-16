@@ -40,8 +40,9 @@ def main():
     G.add_nodes_from([tuple(partition) for partition in partitions(N)])
     for node in G.nodes:
         G.add_edge(node, tuple(next_state(list(node))))
-    
+    # change figure size to account for different N size
     plt.figure(figsize=(48,36))
+    
     pos = nx.nx_pydot.graphviz_layout(G,prog='dot')
     nx.draw_networkx(G, pos=pos, node_color = '#ff00ff',font_size = 6, with_labels=True, verticalalignment='baseline')
     plt.savefig('size_.png')
